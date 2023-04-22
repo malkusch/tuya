@@ -20,8 +20,6 @@ public final class OpenhabTuyaApi implements TuyaApi {
         private final Api.Factory apiFactory;
         private final Device.Factory deviceFactory;
 
-        
-
         public Factory(Duration deviceTimout, Duration discoverTyime, Duration expiration) {
             this(new Gson(), discoverTyime, deviceTimout, expiration);
         }
