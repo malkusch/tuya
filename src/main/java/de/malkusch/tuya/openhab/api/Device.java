@@ -27,6 +27,7 @@ public final class Device extends TuyaDevice implements AutoCloseable {
 
     final ApiSync sync;
     private final InetAddress address;
+    final String id;
 
     private Device(Gson gson, ApiSync sync, EventLoopGroup eventLoopGroup, String deviceId, byte[] deviceKey,
             String address, String protocolVersion) throws UnknownHostException {
@@ -34,6 +35,7 @@ public final class Device extends TuyaDevice implements AutoCloseable {
         super(gson, sync, eventLoopGroup, deviceId, deviceKey, address, protocolVersion);
 
         this.sync = sync;
+        this.id = deviceId;
         this.address = InetAddress.getByName(address);
     }
 
