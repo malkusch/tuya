@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.malkusch.tuya</groupId>
-	<artifactId>tuya-api</artifactId>
+	<artifactId>tuya</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Tuya</name>
 	<description>Tuya API</description>
@@ -22,6 +22,7 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<github.repository>malkusch/tuya</github.repository>
 	</properties>
 	<dependencies>
 		<dependency>
