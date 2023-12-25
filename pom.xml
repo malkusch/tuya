@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>org.smarthomej.addons.bundles</groupId>
 			<artifactId>org.smarthomej.binding.tuya</artifactId>
-			<version>4.0.2</version>
+			<version>4.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.netty</groupId>
