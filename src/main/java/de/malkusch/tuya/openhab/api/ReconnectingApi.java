@@ -1,22 +1,25 @@
 package de.malkusch.tuya.openhab.api;
 
-import static java.lang.Thread.currentThread;
-import static java.time.Duration.between;
-import static java.time.Instant.now;
-
 import java.io.IOException;
 import java.time.Duration;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import static java.lang.System.Logger.Level.DEBUG;
+import static java.lang.Thread.currentThread;
+import static java.time.Duration.between;
+import static java.time.Instant.now;
+import static java.util.Objects.requireNonNull;
 
-@RequiredArgsConstructor
-@Slf4j
 final class ReconnectingApi implements Api {
 
+    private static final System.Logger log = System.getLogger(ApiSync.class.getName());
     private final Api api;
     private final Duration timeout;
     private final Object lock = new Object();
+
+    public ReconnectingApi(Api api, Duration timeout) {
+        this.api = requireNonNull(api);
+        this.timeout = requireNonNull(timeout);
+    }
 
     @Override
     public void enable() throws IOException {
@@ -63,15 +66,15 @@ final class ReconnectingApi implements Api {
     private <T> T reconnected(Query<T> query) throws IOException {
         synchronized (lock) {
             if (!isConnected()) {
-                log.debug("Reconnecting");
+                log.log(DEBUG, "Reconnecting");
                 device().dispose();
                 device().connect();
                 if (!awaitConnected()) {
-                    log.debug("Reconnecting failed");
+                    log.log(DEBUG, "Reconnecting failed");
                     device().dispose();
                     throw new IOException("Reconnect failed");
                 }
-                log.debug("Reconnected");
+                log.log(DEBUG, "Reconnected");
             }
         }
         try {
@@ -111,14 +114,14 @@ final class ReconnectingApi implements Api {
             if (isConnected()) {
                 return true;
             }
-            log.debug("Waiting for connection");
+            log.log(DEBUG, "Waiting for connection");
             while (!isConnected()) {
                 if (Thread.interrupted()) {
                     currentThread().interrupt();
                     return isConnected();
                 }
                 if (now().isAfter(waitUntil)) {
-                    log.debug("Waiting for connection timed out");
+                    log.log(DEBUG, "Waiting for connection timed out");
                     return isConnected();
                 }
                 try {
@@ -129,7 +132,7 @@ final class ReconnectingApi implements Api {
                     return isConnected();
                 }
             }
-            log.debug("Connected after {} ms", between(start, now()).toMillis());
+            log.log(DEBUG, "Connected after {0} ms", between(start, now()).toMillis());
         }
         return isConnected();
     }

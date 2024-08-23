@@ -24,19 +24,14 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.34</version>
+			<groupId>org.smarthomej.addons.bundles</groupId>
+			<artifactId>org.smarthomej.binding.tuya</artifactId>
+			<version>4.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>2.0.16</version>
-		</dependency>
-		<dependency>
-			<groupId>org.smarthomej.addons.bundles</groupId>
-			<artifactId>org.smarthomej.binding.tuya</artifactId>
-			<version>4.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.netty</groupId>
@@ -53,12 +48,6 @@
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
 			<version>5.11.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>2.0.16</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

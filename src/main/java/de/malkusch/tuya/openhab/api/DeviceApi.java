@@ -1,21 +1,20 @@
 package de.malkusch.tuya.openhab.api;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
-import static java.lang.Thread.currentThread;
-import static java.time.Duration.between;
-import static java.time.Instant.now;
-
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Map;
 
-import lombok.extern.slf4j.Slf4j;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+import static java.lang.System.Logger.Level.DEBUG;
+import static java.lang.Thread.currentThread;
+import static java.time.Duration.between;
+import static java.time.Instant.now;
 
-@Slf4j
 final class DeviceApi implements Api {
 
+    private static final System.Logger log = System.getLogger(DeviceApi.class.getName());
     private final Device device;
     private final Duration timeout;
     private final Duration expiration;
@@ -45,7 +44,7 @@ final class DeviceApi implements Api {
     public State state() throws IOException {
         synchronized (lock) {
             if (isExpired()) {
-                log.debug("Requesting expired state");
+                log.log(DEBUG, "Requesting expired state");
                 // device.refreshStatus();
                 device.requestStatus();
                 waitForState();
@@ -67,7 +66,7 @@ final class DeviceApi implements Api {
     public void send(Power power) throws IOException {
         synchronized (lock) {
             var command = command(power);
-            log.debug("Update power {}", command);
+            log.log(DEBUG, "Update power {0}", command);
             expire();
             device.set(command);
             waitForState();
@@ -112,7 +111,7 @@ final class DeviceApi implements Api {
             if (!isExpired()) {
                 return;
             }
-            log.debug("Waiting for state");
+            log.log(DEBUG, "Waiting for state");
             while (isExpired()) {
 
                 if (now().isAfter(waitUntil)) {
@@ -133,7 +132,7 @@ final class DeviceApi implements Api {
                     throw new IOException("Waiting for state was interrupted", e);
                 }
             }
-            log.debug("Waited {} ms", between(start, now()).toMillis());
+            log.log(DEBUG, "Waited {0} ms", between(start, now()).toMillis());
         }
     }
 

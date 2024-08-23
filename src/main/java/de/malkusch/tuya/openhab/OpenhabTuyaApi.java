@@ -1,27 +1,25 @@
 package de.malkusch.tuya.openhab;
 
-import java.io.IOException;
-import java.time.Duration;
-
 import com.google.gson.Gson;
-
 import de.malkusch.tuya.TuyaApi;
 import de.malkusch.tuya.openhab.api.Api;
 import de.malkusch.tuya.openhab.api.Api.Power;
 import de.malkusch.tuya.openhab.api.Device;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+import java.io.IOException;
+import java.time.Duration;
+
+import static java.util.Objects.requireNonNull;
+
 public final class OpenhabTuyaApi implements TuyaApi {
 
-    @RequiredArgsConstructor
     public final static class Factory implements TuyaApi.Factory {
 
         private final Api.Factory apiFactory;
         private final Device.Factory deviceFactory;
 
-        public Factory(Duration deviceTimout, Duration discoverTyime, Duration expiration) {
-            this(new Gson(), discoverTyime, deviceTimout, expiration);
+        public Factory(Duration deviceTimout, Duration discoveryTime, Duration expiration) {
+            this(new Gson(), discoveryTime, deviceTimout, expiration);
         }
 
         public Factory(Gson gson, Duration discoveryTimeout, Duration timeout, Duration expiration) {
@@ -43,6 +41,10 @@ public final class OpenhabTuyaApi implements TuyaApi {
     }
 
     private final Api openhab;
+
+    public OpenhabTuyaApi(Api openhab) {
+        this.openhab = requireNonNull(openhab);
+    }
 
     @Override
     public void turnOn() throws IOException {

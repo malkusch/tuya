@@ -1,6 +1,7 @@
 package de.malkusch.tuya.openhab.api;
 
 import static java.time.Instant.now;
+import static java.util.Objects.requireNonNull;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -8,14 +9,17 @@ import java.time.Instant;
 import java.util.Map;
 import java.util.Optional;
 
-import lombok.RequiredArgsConstructor;
 
 public interface Api extends AutoCloseable {
 
-    @RequiredArgsConstructor
     public static final class Factory {
         private final Duration timeout;
         private final Duration expiration;
+
+        public Factory(Duration timeout, Duration expiration) {
+            this.timeout = requireNonNull(timeout);
+            this.expiration = requireNonNull(expiration);
+        }
 
         public Api api(Device device) throws IOException {
             var deviceApi = new DeviceApi(device, timeout, expiration);
