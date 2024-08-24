@@ -1,10 +1,10 @@
 ## Maven
 
 This package is available in Maven central:
-```xml
+```xml maven
 <dependency>
     <groupId>de.malkusch.tuya</groupId>
 	<artifactId>tuya</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 </dependency>
 ```

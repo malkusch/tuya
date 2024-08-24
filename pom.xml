@@ -50,4 +50,35 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<preparationGoals>replacer:replace</preparationGoals>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>1.5.3</version>
+				<configuration>
+					<file>README.md</file>
+					<regexFlags>
+						<regexFlag>MULTILINE</regexFlag>
+						<regexFlag>DOTALL</regexFlag>
+					</regexFlags>
+					<token>```xml maven.*```</token>
+					<value><![CDATA[```xml maven
+<dependency>
+    <groupId>${project.groupId}</groupId>
+	<artifactId>${project.artifactId}</artifactId>
+	<version>${project.version}</version>
+</dependency>
+```]]></value>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
