@@ -56,7 +56,7 @@
 			<plugin>
 				<artifactId>maven-release-plugin</artifactId>
 				<configuration>
-					<preparationGoals>-Dincludes=Readme.md clean replacer:replace scm:add verify</preparationGoals>
+					<preparationGoals>-Dbasedir=${project.basedir} -Dincludes=Readme.md clean replacer:replace scm:add verify</preparationGoals>
 				</configuration>
 			</plugin>
 			<plugin>
