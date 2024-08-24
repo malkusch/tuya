@@ -2,13 +2,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.malkusch.tuya</groupId>
 	<artifactId>tuya</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.9-SNAPSHOT</version>
 	<name>Tuya</name>
 	<description>Tuya API</description>
 	<parent>
 		<groupId>de.malkusch.parent</groupId>
 		<artifactId>oss-parent</artifactId>
-		<version>3.0.20</version>
+		<version>3.0.21</version>
 	</parent>
 	<url>https://github.com/malkusch/${project.artifactId}</url>
 	<scm>
