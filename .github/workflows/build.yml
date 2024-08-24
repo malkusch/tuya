@@ -11,5 +11,4 @@ jobs:
     uses: malkusch/github/.github/workflows/maven-build.yml@master
     secrets: inherit
     with:
-      UNIT_TESTS_ENABLED: false
       INTEGRATION_TESTS_ENABLED: false
