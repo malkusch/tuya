@@ -5,6 +5,6 @@ This package is available in Maven central:
 <dependency>
   <groupId>de.malkusch.tuya</groupId>
   <artifactId>tuya</artifactId>
-  <version>0.0.12</version>
+  <version>0.0.13</version>
 </dependency>
 ```
