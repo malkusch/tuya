@@ -17,8 +17,7 @@
 			scm:git:git@github.com:malkusch/${project.artifactId}.git</developerConnection>
 	</scm>
 	<properties>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<github.repository>malkusch/tuya</github.repository>
 	</properties>
