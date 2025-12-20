@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.malkusch.tuya</groupId>
 	<artifactId>tuya</artifactId>
-	<version>0.0.15</version>
+	<version>0.0.16-SNAPSHOT</version>
 	<name>Tuya</name>
 	<description>Tuya API</description>
 	<parent>
@@ -15,7 +15,7 @@
         <connection>scm:git:${project.scm.url}</connection>
         <developerConnection>scm:git:${project.scm.url}</developerConnection>
         <url>https://github.com/malkusch/${project.artifactId}</url>
-        <tag>tuya-0.0.15</tag>
+        <tag>HEAD</tag>
     </scm>
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
