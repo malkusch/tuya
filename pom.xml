@@ -8,15 +8,15 @@
 	<parent>
 		<groupId>de.malkusch.parent</groupId>
 		<artifactId>oss-parent</artifactId>
-		<version>3.0.26</version>
+		<version>3.0.28</version>
 	</parent>
-	<url>https://github.com/malkusch/${project.artifactId}</url>
-	<scm>
-		<connection>scm:git:git://github.com/malkusch/${project.artifactId}.git</connection>
-		<developerConnection>
-			scm:git:git@github.com:malkusch/${project.artifactId}.git</developerConnection>
-	</scm>
-	<properties>
+    <url>https://github.com/malkusch/${project.artifactId}</url>
+    <scm>
+        <connection>scm:git:${project.scm.url}</connection>
+        <developerConnection>scm:git:${project.scm.url}</developerConnection>
+        <url>https://github.com/malkusch/${project.artifactId}</url>
+    </scm>
+    <properties>
         <maven.compiler.release>17</maven.compiler.release>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<github.repository>malkusch/tuya</github.repository>
