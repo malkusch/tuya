@@ -8,20 +8,18 @@
 	<parent>
 		<groupId>de.malkusch.parent</groupId>
 		<artifactId>oss-parent</artifactId>
-		<version>3.0.28</version>
+		<version>3.0.29</version>
 	</parent>
     <url>https://github.com/malkusch/${project.artifactId}</url>
     <scm>
         <connection>scm:git:${project.scm.url}</connection>
         <developerConnection>scm:git:${project.scm.url}</developerConnection>
         <url>https://github.com/malkusch/${project.artifactId}</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<github.repository>malkusch/tuya</github.repository>
-	</properties>
+    </properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.smarthomej.addons.bundles</groupId>
